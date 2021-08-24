@@ -21,7 +21,9 @@ export function StatusItem({name, init}) {
 
       )}
       {(init.status === IDLE) && !init.isInitialized && (
-        <Button colorScheme={"red"} onClick={init.initialize}>Init</Button>
+        <Stack w={"100%"}>
+          <Button colorScheme={"blue"} onClick={init.initialize}>Init</Button>
+        </Stack>
       )}
     </Stack>
   )

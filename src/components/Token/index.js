@@ -13,7 +13,7 @@ export function WakandaToken() {
   const wkdt = useWkdtBalanceHook(cu.addr)
   const init = useInitWkdtHook(cu.addr)
 
-  if (init.isInitialized === false){
+  if (init.isInitialized === false || wkdt.balance === null){
     return <WakandaTokenInit />
   }
 

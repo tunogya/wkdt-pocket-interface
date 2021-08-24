@@ -20,6 +20,9 @@ export function WakandaPass(){
       {ids.ids.map(id => (
         <WakandaPassItem address={cu.addr} id={id} key={id}/>
       ))}
+      {ids.ids.length === 0 && (
+        <Text fontSize={"sm"} color={"gray"}>你还没有 WakandaPass，购买 Wakanda 实体商品将有机会获得 WakandaPass。</Text>
+      )}
     </Stack>
   )
 }
