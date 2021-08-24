@@ -1,16 +1,22 @@
 import React, {Suspense} from "react";
-import {Box, Button, Spacer, Spinner, Stack, Text, useClipboard} from "@chakra-ui/react";
+import {Box, Button, Center, Spacer, Spinner, Stack, Text, useClipboard} from "@chakra-ui/react";
 import {useWkdtBalanceHook} from "../../hooks/use-wkdt-balance.hook";
 import {useCurrentUserHook} from "../../hooks/use-current-user.hook";
 import {fmtWkdt} from "../../util/fmt-wkdt";
-import Login from "../../pages/login";
 import {PROCESSING} from "../../global/constants";
 import {TransferToken} from "./components/TransferToken";
+import {useInitWkdtHook} from "../../hooks/use-init-wkdt.hook";
+import WakandaTokenInit from "./components/Initialized";
 
 export function WakandaToken() {
   const [cu, loggedIn] = useCurrentUserHook()
   const wkdt = useWkdtBalanceHook(cu.addr)
   const {hasCopied, onCopy} = useClipboard(cu.addr)
+  const init = useInitWkdtHook(cu.addr)
+
+  if (init.isInitialized === false){
+    return <WakandaTokenInit />
+  }
 
   return (
     <Stack spacing={4}>
@@ -43,7 +49,12 @@ export function WakandaToken() {
 
 export function WakandaTokenSkeleton() {
   return (
-    <></>
+    <Stack>
+      <Center>
+        <Spinner size={"sm"}/>
+        <Text fontSize={"sm"} fontWeight={"bold"}>正在检查用户状态</Text>
+      </Center>
+    </Stack>
   )
 }
 
