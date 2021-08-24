@@ -58,7 +58,7 @@ export function Root() {
 
 export function RootSkeleton() {
   return (
-    <>Skeleton</>
+    <>Wakanda Pocket</>
   )
 }
 

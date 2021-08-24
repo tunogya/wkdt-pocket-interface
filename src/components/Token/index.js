@@ -13,8 +13,8 @@ export function WakandaToken() {
   const wkdt = useWkdtBalanceHook(cu.addr)
   const init = useInitWkdtHook(cu.addr)
 
-  if (init.isInitialized === false || wkdt.balance === null){
-    return <WakandaTokenInit />
+  if (init.isInitialized === false || wkdt.balance === null) {
+    return <WakandaTokenInit/>
   }
 
   return (
@@ -26,7 +26,8 @@ export function WakandaToken() {
           {wkdt.status === PROCESSING ? (
             <Spinner size={"xs"}/>
           ) : (
-            <Text fontWeight={"bold"} fontSize={"xs"} onClick={() => wkdt.refresh()}>{fmtWkdt(wkdt.balance, true)}</Text>
+            <Text fontWeight={"bold"} fontSize={"xs"}
+                  onClick={() => wkdt.refresh()}>{fmtWkdt(wkdt.balance, true)}</Text>
           )}
         </Stack>
         <Spacer/>
@@ -36,10 +37,9 @@ export function WakandaToken() {
         <Text fontSize={"sm"} fontWeight={"bold"}>交易记录</Text>
       </Stack>
       <Stack direction={"row"} position={"fixed"} left={0} bottom={0} w={"100%"} p={4}>
-     <TransferToken />
+        <TransferToken/>
       </Stack>
     </Stack>
-
   )
 }
 
