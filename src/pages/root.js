@@ -9,7 +9,7 @@ import {
   Tab,
   TabPanel,
   Button,
-  Divider, Badge
+  Badge
 } from "@chakra-ui/react";
 import WakandaPass from "../components/Pass";
 import WakandaToken from "../components/Token";
@@ -31,7 +31,6 @@ export function Root() {
         <Spacer/>
         <Button size={"sm"} onClick={logOut} colorScheme={"red"}>注销</Button>
       </Stack>
-      <Divider/>
       <Tabs colorScheme={"blue"}>
         <TabList>
           <Tab fontWeight={"bold"}>代币</Tab>
