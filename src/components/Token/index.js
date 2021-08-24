@@ -26,7 +26,7 @@ export function WakandaToken() {
           {wkdt.status === PROCESSING ? (
             <Spinner size={"xs"}/>
           ) : (
-            <Text fontWeight={"bold"} fontSize={"xs"}>{fmtWkdt(wkdt.balance, true)}</Text>
+            <Text fontWeight={"bold"} fontSize={"xs"} onClick={() => wkdt.refresh()}>{fmtWkdt(wkdt.balance, true)}</Text>
           )}
         </Stack>
         <Spacer/>

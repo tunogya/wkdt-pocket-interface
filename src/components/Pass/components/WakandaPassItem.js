@@ -5,7 +5,6 @@ import {fmtWkdt} from "../../../util/fmt-wkdt";
 
 export function WakandaPassItem({address, id}){
   const pass = useWakandaPassDetail(address, id)
-  console.log(pass)
 
   return(
     <Stack border={"1px"} p={4} borderRadius={"8"} h={40} spacing={1}>

@@ -1,5 +1,5 @@
 import React, {Suspense} from "react";
-import {Stack} from "@chakra-ui/react";
+import {Center, Spinner, Stack, Text} from "@chakra-ui/react";
 import {useCurrentUserHook} from "../../hooks/use-current-user.hook";
 import {useInitPassHook} from "../../hooks/use-init-pass.hook";
 import WakandaPassInit from "./components/initialized";
@@ -26,7 +26,12 @@ export function WakandaPass(){
 
 export function WakandaPassSkeleton(){
   return (
-    <></>
+    <Stack>
+      <Center>
+        <Spinner size={"sm"}/>
+        <Text fontSize={"sm"} fontWeight={"bold"}>正在检查用户状态</Text>
+      </Center>
+    </Stack>
   )
 }
 
