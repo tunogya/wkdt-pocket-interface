@@ -7,6 +7,7 @@ import {PROCESSING} from "../../global/constants";
 import {TransferToken} from "./components/TransferToken";
 import {useInitWkdtHook} from "../../hooks/use-init-wkdt.hook";
 import WakandaTokenInit from "./components/Initialized";
+import {LogoWhite} from "../logo";
 
 export function WakandaToken() {
   const [cu, loggedIn] = useCurrentUserHook()
@@ -19,10 +20,10 @@ export function WakandaToken() {
 
   return (
     <Stack spacing={4}>
-      <Stack height={48} borderRadius={8} p={4} color={"white"}
+      <Stack height={48} borderRadius={8} p={4} color={"white"} spacing={1}
              bgGradient="linear(to-r,teal.200,yellow.200, pink.200)">
         <Stack direction={"row"}>
-          <Text fontWeight={"bold"} fontSize={"sm"}>WakandaToken</Text>
+          <LogoWhite h={5}/>
           <Spacer/>
           {wkdt.status === PROCESSING ? (
             <Spinner size={"sm"}/>
@@ -32,7 +33,9 @@ export function WakandaToken() {
           )}
         </Stack>
         <Spacer/>
+        <Text fontSize={"xs"}>WakandaToken</Text>
         <Text fontSize={"xs"}>{cu.addr}</Text>
+
       </Stack>
       <Stack>
         <Text fontSize={"sm"} fontWeight={"bold"}>交易记录</Text>

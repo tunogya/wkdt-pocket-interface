@@ -3,6 +3,7 @@ import {Spacer, Spinner, Stack, Text} from "@chakra-ui/react";
 import {useWakandaPassDetail} from "../../../hooks/use-pass-detail.hook";
 import {fmtWkdt} from "../../../util/fmt-wkdt";
 import {PROCESSING} from "../../../global/constants";
+import {LogoWhite} from "../../logo";
 
 export function WakandaPassItem({address, id}){
   const pass = useWakandaPassDetail(address, id)
@@ -11,7 +12,7 @@ export function WakandaPassItem({address, id}){
     <Stack p={4} borderRadius={"8"} h={48} spacing={1} color={"white"}
            bgGradient={"linear(to-r, purple.200, blue.200, teal.200)"}>
       <Stack direction={"row"} align={"center"}>
-        <Text fontSize={"sm"} fontWeight={"bold"}>WakandaPass#{pass.pass.id}</Text>
+        <LogoWhite h={5} />
         <Spacer/>
         {pass.status === PROCESSING ? (
           <Spinner size={"sm"}/>
@@ -20,7 +21,7 @@ export function WakandaPassItem({address, id}){
         )}
       </Stack>
       <Spacer/>
-      <Text fontSize={"xs"}>{pass.pass.metadata.title}</Text>
+      <Text fontSize={"xs"}>{pass.pass.metadata.title} #{pass.pass.id}</Text>
       <Text fontSize={"xs"}>creator: {pass.pass.originalOwner}</Text>
     </Stack>
   )
