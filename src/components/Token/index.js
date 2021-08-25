@@ -19,7 +19,8 @@ export function WakandaToken() {
 
   return (
     <Stack spacing={4}>
-      <Stack height={40} borderRadius={8} border={"1px"} p={4} borderColor={"gray.200"}>
+      <Stack height={40} borderRadius={8} p={4}
+             bgGradient="linear(to-r,teal.200,yellow.200, pink.200)">
         <Stack direction={"row"}>
           <Text fontWeight={"bold"} fontSize={"xs"}>WakandaToken</Text>
           <Spacer/>

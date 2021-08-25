@@ -7,7 +7,8 @@ export function WakandaPassItem({address, id}){
   const pass = useWakandaPassDetail(address, id)
 
   return(
-    <Stack border={"1px"} p={4} borderRadius={"8"} h={40} spacing={1} borderColor={"gray.200"}>
+    <Stack p={4} borderRadius={"8"} h={40} spacing={1}
+           bgGradient={"linear(to-r, purple.200, blue.200, teal.200)"}>
       <Stack direction={"row"} align={"center"}>
         <Text fontSize={"xs"} fontWeight={"bold"}>WakandaPass#{pass.pass.id}</Text>
         <Spacer/>
