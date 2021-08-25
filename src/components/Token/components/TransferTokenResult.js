@@ -3,6 +3,11 @@ import {fmtWkdt} from "../../../util/fmt-wkdt";
 import React from "react";
 
 export function TransferTokenSuccess({wkdt, setState}){
+  function handleNextTx(){
+    setState(false)
+    wkdt.resetTx()
+  }
+
   return(
     <Stack h={80}>
       <Text fontSize={"sm"} fontWeight={"bold"}>交易成功!</Text>
@@ -14,7 +19,7 @@ export function TransferTokenSuccess({wkdt, setState}){
       <Text fontSize={"xs"}>手续费支付者: {wkdt.tx.events[2].data.from}</Text>
       <Text fontSize={"xs"}>验证者: {wkdt.tx.events[3].data.to}</Text>
       <Spacer/>
-      <Button onClick={() => setState(false)}>继续转账</Button>
+      <Button onClick={handleNextTx}>继续转账</Button>
     </Stack>
   )
 }
@@ -29,7 +34,7 @@ export function TransferTokenError({wkdt, setState}){
     <Stack h={80}>
       <Text fontSize={"sm"} fontWeight={"bold"}>发生错误，请检查地址是否正确!</Text>
       <Spacer/>
-      <Button onClick={() => handleNext()}>继续转账</Button>
+      <Button onClick={handleNext}>继续转账</Button>
     </Stack>
   )
 }
