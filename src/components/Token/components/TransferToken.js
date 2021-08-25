@@ -10,8 +10,8 @@ import {
   TabList, TabPanel, TabPanels,
   Tabs, useDisclosure
 } from "@chakra-ui/react";
-import {TransferTokenReceive} from "./TransferTokenReceive";
-import {TransferTokenSend} from "./TransferTokenSend";
+import TransferTokenReceive from "./TransferTokenReceive";
+import TransferTokenSend from "./TransferTokenSend";
 import {useCurrentUserHook} from "../../../hooks/use-current-user.hook";
 
 export function TransferToken() {
@@ -28,7 +28,7 @@ export function TransferToken() {
     <Stack direction={"row"} w={"100%"}>
       <Button onClick={() => handleTransfer(0)} fontWeight={"bold"} w={"50%"}>转账</Button>
       <Button onClick={() => handleTransfer(1)} fontWeight={"bold"} w={"50%"}>接收</Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
         <ModalOverlay/>
         <ModalContent>
           <ModalHeader>WKDT 交易</ModalHeader>
