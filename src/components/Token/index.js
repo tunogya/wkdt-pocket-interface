@@ -19,16 +19,16 @@ export function WakandaToken() {
 
   return (
     <Stack spacing={4}>
-      <Stack height={40} borderRadius={8} p={4}
+      <Stack height={48} borderRadius={8} p={4} color={"white"}
              bgGradient="linear(to-r,teal.200,yellow.200, pink.200)">
         <Stack direction={"row"}>
-          <Text fontWeight={"bold"} fontSize={"xs"}>WakandaToken</Text>
+          <Text fontWeight={"bold"} fontSize={"sm"}>WakandaToken</Text>
           <Spacer/>
           {wkdt.status === PROCESSING ? (
-            <Spinner size={"xs"}/>
+            <Spinner size={"sm"}/>
           ) : (
-            <Text fontWeight={"bold"} fontSize={"xs"}
-                  onClick={() => wkdt.refresh()}>{fmtWkdt(wkdt.balance, true)}</Text>
+            <Text fontWeight={"bold"} fontSize={"sm"}
+                  onClick={wkdt.refresh}>{fmtWkdt(wkdt.balance, true)}</Text>
           )}
         </Stack>
         <Spacer/>
