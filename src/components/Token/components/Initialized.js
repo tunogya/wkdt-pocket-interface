@@ -4,13 +4,16 @@ import {useCurrentUserHook} from "../../../hooks/use-current-user.hook";
 import React, {Suspense} from "react";
 import {useInitWkdtHook} from "../../../hooks/use-init-wkdt.hook";
 import {StatusItem} from "../../Initialized/StatusItem";
+import WakandaToken from "../index";
+import {useWkdtBalanceHook} from "../../../hooks/use-wkdt-balance.hook";
 
 export function WakandaTokenStatus() {
   const [cu] = useCurrentUserHook()
   const init = useInitWkdtHook(cu.addr)
+  const wkdt = useWkdtBalanceHook(cu.addr)
 
   return (
-    <StatusItem name={"WakandaToken"} init={init} />
+    <StatusItem name={"WakandaToken"} init={init} check={wkdt}/>
   )
 }
 

@@ -4,13 +4,15 @@ import {useCurrentUserHook} from "../../../hooks/use-current-user.hook";
 import React, {Suspense} from "react";
 import {StatusItem} from "../../Initialized/StatusItem";
 import {useInitPassHook} from "../../../hooks/use-init-pass.hook";
+import {useWakandaPassIds} from "../../../hooks/use-pass-ids.hook";
 
 export function WakandaPassStatus() {
   const [cu] = useCurrentUserHook()
   const init = useInitPassHook(cu.addr)
+  const ids = useWakandaPassIds(cu.addr)
 
   return (
-    <StatusItem name={"WakandaPass"} init={init} />
+    <StatusItem name={"WakandaPass"} init={init} check={ids}/>
   )
 }
 

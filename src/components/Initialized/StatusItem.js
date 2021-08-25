@@ -4,7 +4,7 @@ import {BeatLoader} from "react-spinners";
 import {CheckCircleIcon} from "@chakra-ui/icons";
 import React from "react";
 
-export function StatusItem({name, init}) {
+export function StatusItem({name, init, check}) {
   return(
     <Stack align={"center"} h={8} spacing={8}>
       <Heading fontSize={"md"}>{name}</Heading>
@@ -16,9 +16,12 @@ export function StatusItem({name, init}) {
       )}
       {(init.status === IDLE) && init.isInitialized && (
         <Stack w={"100%"}>
-          <IconButton aria-label={"sure"} icon={ <CheckCircleIcon/>} disabled/>
+          <Button onClick={check.refresh} isLoading={check.status === PROCESSING} loadingText={"正在更新"}>
+            <CheckCircleIcon/>
+            <Text fontSize={"sm"} pl={2}>完成</Text>
+          </Button>
+          <Text fontSize={"xs"} color={"gray"}>若页面停留，请手动刷新页面</Text>
         </Stack>
-
       )}
       {(init.status === IDLE) && !init.isInitialized && (
         <Stack w={"100%"}>
