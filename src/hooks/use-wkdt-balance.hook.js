@@ -17,9 +17,15 @@ export const statusAtom = atomFamily({
   default: IDLE,
 })
 
+export const txAtom = atomFamily({
+  key: "wkdt-balance::tx",
+  default: null,
+})
+
 export function useWkdtBalanceHook(address) {
   const [balance, setBalance] = useRecoilState(valueAtom(address))
   const [status, setStatus] = useRecoilState(statusAtom(address))
+  const [tx, setTx] = useRecoilState(txAtom(address))
 
   async function refresh() {
     setStatus(PROCESSING)
@@ -30,9 +36,10 @@ export function useWkdtBalanceHook(address) {
   return {
     balance,
     status,
+    tx,
     refresh,
     async transfer(amount, to) {
-      await txTransferWkdt(
+      const tx = await txTransferWkdt(
         {amount: amount, to: to},
         {
           onStart() {
@@ -51,6 +58,7 @@ export function useWkdtBalanceHook(address) {
           },
         }
       )
-    }
+      setTx(tx)
+    },
   }
 }
