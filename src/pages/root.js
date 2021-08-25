@@ -15,6 +15,7 @@ import WakandaPass from "../components/Pass";
 import WakandaToken from "../components/Token";
 import Login from "./login";
 import {useCurrentUserHook} from "../hooks/use-current-user.hook";
+import {ColorModeSwitcher} from "../components/ColorModeSwitcher";
 
 export function Root() {
   const [cu, loggedIn, {logOut}] = useCurrentUserHook()
@@ -30,11 +31,14 @@ export function Root() {
         <Text fontWeight={"bold"} fontSize={"md"}>Wakanda Pocket</Text>
         <Badge>测试网</Badge>
         <Spacer/>
+        <ColorModeSwitcher/>
         <Button size={"sm"} onClick={logOut} colorScheme={"red"}>注销</Button>
       </Stack>
-      <Stack direction={"row"} pl={2} pb={2} onClick={onCopy}>
-        <Text fontSize={"xs"}  fontWeight={"bold"}>我的账户: {cu.addr}</Text>
-        <Text fontSize={"xs"} color={"cyan"} fontWeight={"bold"}>{hasCopied && ("copy!")}</Text>
+      <Stack direction={"row"} align={"center"}>
+        <Button size={"xs"} variant={"ghost"} onClick={onCopy}>
+          {cu.addr}
+        </Button>
+        <Text fontSize={"xs"} fontWeight={"bold"} w={"auto"}>{hasCopied && ("copy!")} </Text>
       </Stack>
       <Tabs colorScheme={"blue"}>
         <TabList>
@@ -50,9 +54,7 @@ export function Root() {
           </TabPanel>
         </TabPanels>
       </Tabs>
-
     </Stack>
-
   )
 }
 
