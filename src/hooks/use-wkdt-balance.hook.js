@@ -60,5 +60,8 @@ export function useWkdtBalanceHook(address) {
       )
       setTx(tx)
     },
+    resetTx(){
+      setTx(null)
+    }
   }
 }

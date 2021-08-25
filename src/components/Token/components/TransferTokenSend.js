@@ -13,7 +13,7 @@ import {useWkdtBalanceHook} from "../../../hooks/use-wkdt-balance.hook";
 import {fmtWkdt} from "../../../util/fmt-wkdt";
 import {IDLE} from "../../../global/constants";
 import {parseUFix64} from "../../../global/common";
-import {TransferTokenSuccess} from "./TransferTokenResult";
+import {TransferTokenError, TransferTokenSuccess} from "./TransferTokenResult";
 
 export function TransferTokenSend({address}) {
   const parse = (val) => val.replace(/^\$/, "")
@@ -27,9 +27,16 @@ export function TransferTokenSend({address}) {
     setState(true)
   }
 
-  if (wkdt.tx !==null && wkdt.tx.statusCode === 0 && state === true) {
+
+  if (wkdt.tx !==null && wkdt.tx !==undefined  && wkdt.tx.statusCode === 0 && state === true) {
     return (
       <TransferTokenSuccess wkdt={wkdt} setState={setState}/>
+    )
+  }
+
+  if (wkdt.tx === undefined) {
+    return (
+      <TransferTokenError wkdt={wkdt} setState={setState}/>
     )
   }
 

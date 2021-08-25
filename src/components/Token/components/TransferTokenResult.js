@@ -18,3 +18,18 @@ export function TransferTokenSuccess({wkdt, setState}){
     </Stack>
   )
 }
+
+export function TransferTokenError({wkdt, setState}){
+  function handleNext(){
+    setState(false)
+    wkdt.resetTx()
+  }
+
+  return(
+    <Stack h={80}>
+      <Text fontSize={"sm"} fontWeight={"bold"}>发生错误，请检查地址是否正确!</Text>
+      <Spacer/>
+      <Button onClick={() => handleNext()}>继续转账</Button>
+    </Stack>
+  )
+}
