@@ -26,17 +26,17 @@ export function TransferToken() {
 
   return (
     <Stack direction={"row"} w={"100%"}>
-      <Button onClick={() => handleTransfer(0)} fontWeight={"bold"} w={"50%"}>转账</Button>
+      <Button onClick={() => handleTransfer(0)} fontWeight={"bold"} w={"50%"}>发送</Button>
       <Button onClick={() => handleTransfer(1)} fontWeight={"bold"} w={"50%"}>接收</Button>
       <Modal isOpen={isOpen} onClose={onClose} size={"md"}>
         <ModalOverlay/>
         <ModalContent>
-          <ModalHeader>WKDT 交易</ModalHeader>
+          <ModalHeader>WKDT 转账</ModalHeader>
           <ModalCloseButton/>
           <ModalBody>
             <Tabs isFitted variant="soft-rounded" defaultIndex={tabIndex}>
               <TabList mb="1em">
-                <Tab>转账</Tab>
+                <Tab>发送</Tab>
                 <Tab>接收</Tab>
               </TabList>
               <TabPanels>
