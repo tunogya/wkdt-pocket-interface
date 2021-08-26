@@ -9,7 +9,7 @@ import {
   Tab,
   TabPanel,
   Button,
-  Badge, useClipboard
+  Badge, useClipboard, Spinner
 } from "@chakra-ui/react";
 import WakandaPass from "../components/Pass";
 import WakandaToken from "../components/Token";
@@ -18,6 +18,7 @@ import {useCurrentUserHook} from "../hooks/use-current-user.hook";
 import {ColorModeSwitcher} from "../components/ColorModeSwitcher";
 import {useFlowBalanceHook} from "../hooks/use-flow-balance.hook";
 import {fmtFlow} from "../util/fmt-flow";
+import {IDLE} from "../global/constants";
 
 export function Root() {
   const [cu, loggedIn, {logOut}] = useCurrentUserHook()
@@ -43,7 +44,11 @@ export function Root() {
         </Button>
         <Text fontSize={"xs"} fontWeight={"bold"} w={"auto"}>{hasCopied && ("copy!")} </Text>
         <Spacer/>
-        <Text fontSize={"xs"} fontWeight={"bold"}>余额 {fmtFlow(flow.balance)} Flow</Text>
+        {flow.status === IDLE ? (
+          <Text fontSize={"xs"} fontWeight={"bold"} onClick={flow.refresh}>余额 {fmtFlow(flow.balance)} Flow</Text>
+        ) : (
+          <Spinner size={"sm"}/>
+        )}
       </Stack>
       <Tabs colorScheme={"blue"}>
         <TabList>

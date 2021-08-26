@@ -28,7 +28,7 @@ export function TransferToken() {
     <Stack direction={"row"} w={"100%"}>
       <Button onClick={() => handleTransfer(0)} fontWeight={"bold"} w={"50%"}>转账</Button>
       <Button onClick={() => handleTransfer(1)} fontWeight={"bold"} w={"50%"}>接收</Button>
-      <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
+      <Modal isOpen={isOpen} onClose={onClose} size={"md"}>
         <ModalOverlay/>
         <ModalContent>
           <ModalHeader>WKDT 交易</ModalHeader>
