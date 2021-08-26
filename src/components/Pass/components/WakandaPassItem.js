@@ -1,5 +1,5 @@
 import React, {Suspense} from "react";
-import {Button, Spacer, Spinner, Stack, Text} from "@chakra-ui/react";
+import {Button, SkeletonText, Spacer, Spinner, Stack, Text} from "@chakra-ui/react";
 import {useWakandaPassDetail} from "../../../hooks/use-pass-detail.hook";
 import {fmtWkdt} from "../../../util/fmt-wkdt";
 import {PROCESSING} from "../../../global/constants";
@@ -33,7 +33,15 @@ export function WakandaPassItem({address, id}){
 
 export function WakandaPassItemSkeleton(){
   return(
-    <></>
+    <Stack p={4} borderRadius={"8"} h={48} spacing={1} color={"white"}
+           bgGradient={"linear(to-r, purple.200, blue.200, teal.200)"}>
+      <Stack direction={"row"} align={"center"}>
+        <LogoWhite h={5} />
+        <Spacer/>
+      </Stack>
+      <Spacer/>
+     <SkeletonText noOfLines={2}/>
+    </Stack>
   )
 }
 
