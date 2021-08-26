@@ -16,10 +16,13 @@ import WakandaToken from "../components/Token";
 import Login from "./login";
 import {useCurrentUserHook} from "../hooks/use-current-user.hook";
 import {ColorModeSwitcher} from "../components/ColorModeSwitcher";
+import {useFlowBalanceHook} from "../hooks/use-flow-balance.hook";
+import {fmtFlow} from "../util/fmt-flow";
 
 export function Root() {
   const [cu, loggedIn, {logOut}] = useCurrentUserHook()
   const {hasCopied, onCopy} = useClipboard(cu.addr)
+  const flow = useFlowBalanceHook(cu.addr)
 
   if (loggedIn === false) {
     return <Login/>
@@ -34,11 +37,13 @@ export function Root() {
         <ColorModeSwitcher/>
         <Button size={"sm"} onClick={logOut} colorScheme={"red"}>注销</Button>
       </Stack>
-      <Stack direction={"row"} align={"center"}>
-        <Button size={"xs"} variant={"ghost"} onClick={onCopy}>
+      <Stack direction={"row"} align={"center"} pl={2} pr={2}>
+        <Button size={"xs"} onClick={onCopy} variant={"outline"}>
           {cu.addr}
         </Button>
         <Text fontSize={"xs"} fontWeight={"bold"} w={"auto"}>{hasCopied && ("copy!")} </Text>
+        <Spacer/>
+        <Text fontSize={"xs"} fontWeight={"bold"}>余额 {fmtFlow(flow.balance)} Flow</Text>
       </Stack>
       <Tabs colorScheme={"blue"}>
         <TabList>
