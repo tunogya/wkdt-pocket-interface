@@ -2,7 +2,7 @@ import React, {Suspense} from "react";
 import {Center, Spacer, Spinner, Stack, Text} from "@chakra-ui/react";
 import {useCurrentUserHook} from "../../hooks/use-current-user.hook";
 import {useInitPassHook} from "../../hooks/use-init-pass.hook";
-import WakandaPassInit from "./components/initialized";
+import WakandaPassInit from "./components/Initialized";
 import {useWakandaPassIds} from "../../hooks/use-pass-ids.hook";
 import WakandaPassItem from "./components/WakandaPassItem";
 
