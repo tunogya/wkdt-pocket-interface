@@ -70,7 +70,33 @@ export function Root() {
 
 export function RootSkeleton() {
   return (
-    <>Wakanda Pocket</>
+    <Stack>
+      <Stack direction={"row"} align={"center"} pl={2} pr={2} pt={2}>
+        <Text fontWeight={"bold"} fontSize={"md"}>Wakanda Pocket</Text>
+        <Badge>测试网</Badge>
+        <Spacer/>
+        <ColorModeSwitcher/>
+        <Button size={"sm"} colorScheme={"red"}>注销</Button>
+      </Stack>
+      <Stack direction={"row"} align={"center"} pl={2} pr={2}>
+        <Spacer/>
+        <Spinner size={"sm"}/>
+      </Stack>
+      <Tabs colorScheme={"blue"}>
+        <TabList>
+          <Tab fontWeight={"bold"}>代币</Tab>
+          <Tab fontWeight={"bold"}>收藏品</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <WakandaToken/>
+          </TabPanel>
+          <TabPanel>
+            <WakandaPass/>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </Stack>
   )
 }
 
