@@ -1,5 +1,5 @@
 import React, {Suspense} from "react";
-import {Button, SkeletonText, Spacer, Spinner, Stack, Text} from "@chakra-ui/react";
+import {SkeletonText, Spacer, Spinner, Stack, Text} from "@chakra-ui/react";
 import {useWakandaPassDetail} from "../../../hooks/use-pass-detail.hook";
 import {fmtWkdt} from "../../../util/fmt-wkdt";
 import {PROCESSING} from "../../../global/constants";
@@ -25,7 +25,6 @@ export function WakandaPassItem({address, id}){
       <Stack direction={"row"} align={"center"}>
         <Text fontSize={"xs"}>creator: {pass.pass.originalOwner}</Text>
         <Spacer/>
-        <Button size={"xs"} variant={"outline"}>发送</Button>
       </Stack>
     </Stack>
   )
