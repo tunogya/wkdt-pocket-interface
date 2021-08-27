@@ -13,7 +13,7 @@ export function Providers({children}) {
       <RecoilRoot>
         <ChakraProvider theme={theme}>
           <Router>
-            <Box>
+            <Box pl={[0, 20, 40, 80]} pr={[0, 20, 40, 80]}>
               {children}
             </Box>
           </Router>

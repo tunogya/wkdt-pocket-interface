@@ -25,7 +25,7 @@ export function TransferToken() {
   }
 
   return (
-    <Stack direction={"row"} w={"100%"}>
+    <Stack direction={"row"} w={"100%"} pl={[0, 20, 40, 80]} pr={[0, 20, 40, 80]}>
       <Button onClick={() => handleTransfer(0)} fontWeight={"bold"} w={"50%"}>发送</Button>
       <Button onClick={() => handleTransfer(1)} fontWeight={"bold"} w={"50%"}>接收</Button>
       <Modal isOpen={isOpen} onClose={onClose} size={"md"}>
